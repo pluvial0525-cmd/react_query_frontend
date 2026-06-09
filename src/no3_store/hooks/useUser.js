@@ -1,32 +1,41 @@
-import{
+import {
+    useQuery,
     useQueryClient,
     useMutation
 } from "@tanstack/react-query"
 import {
+    userAllGetApi,
     userLoginApi,
     userRegisterApi
 } from "../apis/user.api"
+
+
+export const useAllGetUser = () => {
+    return useQuery({
+        queryKey: ["user"],
+        queryFn: userAllGetApi
+    })
+}
+
 
 export const useLoginUser = () => {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: userLoginApi,
-        onSuccess: (user)=> {
+        onSuccess: (user) =>{
             localStorage.setItem("currentUser", JSON.stringify(user));
-            queryClient.setQueriesData(
-                ["user"], user
-            )
+            
         }
     })
 }
 
-export const userRegisterUser = () => {
+export const useRegisterUser = () => {
     return useMutation({
         mutationFn: userRegisterApi
     })
 }
 
-export const logout = ()=> {
+export const logout = () => {
     localStorage.removeItem("currentUser")
 }
 

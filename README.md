@@ -26,6 +26,7 @@ redux: npm install react-redux @reduxjs/toolkit
 json-server(RestfulAPI) : npm install -g json-server
 api 라이브러리: npm install axios
 query 라이브러리: npm install @tanstack/react-query
+antd 라이브러리: npm intstall antd ag-grid-react ag-grid-community
 
 api 설정(주소띄우는)
 1. npm install -g json-server
